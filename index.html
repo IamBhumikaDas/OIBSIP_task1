@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pzza King</title>
+    <link rel="icon" href="images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header>
+        <div id="stars"></div>
+            <div class="navbar">
+                <img src="images/logo.png" alt="">
+                <div class="center-nav">
+                    <a href="">Home</a>
+                    <a href="">Menu</a>
+                    <a href="">About</a>
+                    <a href="">Shop</a>
+
+
+                </div>
+                <div class="social">
+                    <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
+                    <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
+                    <a href=""><i class="fa-solid fa-house"></i></a>
+                </div>
+
+            </div>
+
+            <div class="text">
+                <h1>THE ULTIMATE <br> PIZZA HOUSE</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis impedit sit nemo velit quaerat officia natus. Sunt, enim tenetur repellat provident aperiam vero molestiae ratione voluptatum, quae, nulla est quaerat?</p>
+           <a href="" class="btn">Order Now</a>
+           <a href="" class="btn">View More</a>
+            </div>
+
+       <div class="pizza">
+        <img src="images/pizza1.webp" alt="">
+        <img src="images/pizza2.jpg" alt="">
+        <img src="images/pizza3.jpg" alt="">
+        <img src="images/pizza4.jpg" alt="">
+        <img src="images/pizza5.jpg" alt="">
+       </div>
+
+       <div class="pizza-toggle">
+        <img src="images/pizza4.jpg" alt="">
+       </div>
+   
+    </header>
+
+     <script>
+        // const pizzaImages =document.querySelector('.pizza img')
+        // const toggleImages = document.querySelector('.pizza-toggle img')
+        const pizzaImages = document.querySelectorAll('.pizza img')
+const toggleImages = document.querySelectorAll('.pizza-toggle img')
+
+        let currentIndex = 0;
+        toggleImages[currentIndex].classList.add('active');
+        pizzaImages.forEach((img,index)=>{
+            img.addEventListener('click',()=>{
+                toggleImages.forEach(toggleImg => toggleImg.classList.remove('active'));
+                toggleImages[currentIndex].classList.add('active');
+                toggleImages[currentIndex].src =pizzaImages[index].src;
+                currentIndex =(currentIndex+1) % toggleImages.length;
+            })
+        })
+
+
+        //generate random stars
+
+        function createStars(){
+            const starsContainer = document.getElementById('stars');
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+
+            for (let i =0; i<100; i++){
+                const star = document.createElement('div')
+                star.className = 'star'
+                star.style.left= `${Math.random() * windowWidth}px`;
+                star.style.top= `${Math.random() * windowHeight}px`;
+                starsContainer.appendChild(star);
+
+            }
+        }
+
+        //call the create stars
+
+       window.addEventListener('load',createStars)
+    </script> 
+</body>
+</html>
